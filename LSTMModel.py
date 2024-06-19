@@ -16,6 +16,7 @@ class LSTMModel(nn.Module):
                 embedding_matrix = None,
                 batch_first = True,
                 device = 'cpu'):
+        
         super(LSTMModel, self).__init__()
         
         self.embedding=nn.Embedding(vocab_size, embedding_dim, device=device)
@@ -51,18 +52,18 @@ class LSTMModel(nn.Module):
 
 
 
-   
-
-def fit(model, data, device='cpu'):
+def fit(model, data, config, device='cpu'):
     optimizer = torch.optim.Adam(model.parameters(), lr = 0.001)#,lr=0.001, betas=(0.9,0.999))
-    EPOCHS = 10
+
     model.train()
 
-    for e in range(EPOCHS):
+    for e in range(config.start_step, config.num_steps+1):
         correct = 0
+        n = 0
         for i, (x_batch,y_batch) in enumerate(data):
             x = Variable(x_batch).to(device)
             y = Variable(y_batch).float().to(device)
+
             optimizer.zero_grad()
             y_pred = model.forward(x)
             loss = model.loss(y_pred, y)
@@ -71,14 +72,32 @@ def fit(model, data, device='cpu'):
             optimizer.step()
             
             predicted = torch.round(F.sigmoid(y_pred))
-
-
+            
             correct += (predicted == y).sum()
+            n += x.shape[0]
 
             if i % 50 == 0:
-                print(predicted)
+                print("-------------------------------------------")
                 print(y_pred)
+                print(predicted)
                 print(y)
-                print("{:<15} {:<15} {:<30} {:<30}".format("Epoch: " + str(e), "| Batch: " + str(i), "| Loss: " + str(loss.item()), "| accuracy: " + str(float(correct/float(BATCH_SIZE*(i+1))))))
-        if((e+1) % 5 == 0):
-            torch.save(model.state_dict(), 'lstm-'+str(e+1)+'.pth')
+                print("{:<15} {:<15} {:<30} {:<30}".format("Epoch: " + str(e), "| Batch: " + str(i), "| Loss: " + str(loss.item()), "| accuracy: " + str(float(correct/n))))
+        
+        if((e+1) % config.model_save_step == 0):
+            torch.save(model.state_dict(), config.model_save_dir + '/lstm-' + str(e+1) + '.pth')
+
+
+def eval(model, test, config, device = 'cpu'):
+    model.eval()
+    correct = 0
+    n = 0
+    for i, (x,y) in enumerate(test):
+        x = Variable(x).to(device)
+        y = Variable(y).float().to(device)
+        y_pred = model.forward(x)
+        predicted = torch.round(F.sigmoid(y_pred))
+        n += x.shape[0]
+        correct +=  (predicted == y).sum().item()
+            
+    return correct/n 
+        
