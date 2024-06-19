@@ -1,6 +1,3 @@
-# Film Reviews Sentiment Analysis
- 
-
 
 <!-- PROJECT LOGO -->
 <br />
