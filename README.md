@@ -66,7 +66,8 @@ Each line of input files contains a sentence of review. List of files is allowed
 python.exe Reviews_Sentiment.py --mode train --embedding_path ./glove/glove.6B.50d.txt --stopwords_path ./stopwords --data_dir "./data/IMDB Dataset.csv" --start_step 0 --num_steps 10 --batch_size 32 --model_save_step 5
 ```
 
-
+## Contact
+- Email: mttrung16@gmail.com
 
 
 
