@@ -42,7 +42,7 @@ Accuracy: ~86%
 
 1. Clone the repository
    ```sh
-   git clone https://github.com/trungmac07/Face_Aging.git
+   git clone https://github.com/trungmac07/Reviews_Sentiment_Analysis.git
    ```
 2. Install related packages
     ```sh
