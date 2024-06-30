@@ -18,7 +18,7 @@ The primary goal of this model is to classify reviews as positive or negative, h
 
 Our model use dataset of IMDB movie reviews: [IMDB Dataset](https://www.kaggle.com/datasets/yasserh/imdb-movie-ratings-sentiment-analysis)
 
-Accuracy: ~90%
+Accuracy: ~86%
 
 ## Features 
 
