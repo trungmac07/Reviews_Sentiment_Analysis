@@ -26,6 +26,8 @@ Our model use dataset of IMDB movie reviews: [IMDB Dataset](https://www.kaggle.c
 
 Accuracy: ~86%
 
+Try my fine-tuned BERT sentiment analysis model with enhanced accuracy [here](https://github.com/trungmac07/Bert_Fine_Tuning_Sentiment_Analysis) (with > 90%)
+
 ## Features 
 
 - **Data Preprocessing:**
