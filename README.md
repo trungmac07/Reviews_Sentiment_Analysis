@@ -10,7 +10,13 @@
 
 This project implements a Long Short-Term Memory (LSTM) neural network for sentiment analysis on textual reviews. Sentiment analysis, also known as opinion mining, is the process of determining the emotional tone behind a series of words, used to gain an understanding of the attitudes, opinions, and emotions expressed within an online mention.
 
-![Sentiment Analysis](resources/sentiment_analysis.png)
+
+
+<div style="display: flex; justify-content: center;">
+  <img src="resources/ui.png" alt="Image 2" style="width: 77%;">
+</div>
+
+
 
 In this project, we leverage the power of LSTM networks, a type of recurrent neural network (RNN), which are well-suited to classifying, processing, and making predictions based on sequential data. LSTMs are particularly effective for this task due to their ability to maintain long-term dependencies and handle the vanishing gradient problem common in traditional RNNs.
 
@@ -40,33 +46,42 @@ Accuracy: ~86%
 
 ## Installation
 
-1. Clone the repository
+### 1. Clone the repository
    ```sh
    git clone https://github.com/trungmac07/Face_Aging.git
    ```
-2. Install related packages
+### 2. Install related packages
     ```sh
     pip install -r requirements.txt
     ```
 
 ## Usage
-1. Arguments
+### 1. Arguments
 ```sh
    python.exe Reviews_Sentiment.py -h
 ```
 
-2. Test
+### 2. GUI 
+```sh
+    python.exe GUI.py
+```
+
+### 3. Test
 ```sh
    python.exe Reviews_Sentiment.py --mode test --model_path path/to/model.pth --test_path path/to/test_data.txt 
 ```
 Each line of input files contains a sentence of review. List of files is allowed
 
-3. Train
+![Sentiment Analysis](resources/sentiment_analysis.png)
+
+### 4. Train
 ```sh
 python.exe Reviews_Sentiment.py --mode train --embedding_path ./glove/glove.6B.50d.txt --stopwords_path ./stopwords --data_dir "./data/IMDB Dataset.csv" --start_step 0 --num_steps 10 --batch_size 32 --model_save_step 5
 ```
 
 
+## Contact
+- Email: mttrung16@gmail.com 
 
 
 
