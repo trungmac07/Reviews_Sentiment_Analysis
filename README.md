@@ -13,7 +13,7 @@ This project implements a Long Short-Term Memory (LSTM) neural network for senti
 
 
 <p align="center">
-  <img src="resources/ui.png" alt="ui" style="width: 50%">
+  <img src="resources/ui.png" alt="ui" style="width: 70%">
 </p>
 
 
